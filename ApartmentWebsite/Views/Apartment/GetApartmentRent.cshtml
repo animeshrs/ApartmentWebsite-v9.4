@@ -1,0 +1,69 @@
+﻿@model ApartmentDomain.RentDetails
+
+@{
+    ViewBag.Title = "GetApartmentRent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Apartment Details Page</h2>
+
+<div>
+    <h4>Apartment Details</h4>
+    <hr />
+    <dl class="dl-horizontal" style="font-family:Arial">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlatNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlatNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deposit)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group">
+        <div class="form-group">
+            <label class="control-label col-md-2" >Apartment Photo</label>
+            <div class="col-md-10">
+                <input type="button" value="Photo" onclick="download()" />
+            </div>
+        </div>
+</div>
+<p>
+    @Html.ActionLink("Book", "RegisterBooking", new { AddressID = Model.address_ID }) |
+    @Html.ActionLink("Back to List", "ApartmentIndex")
+</p>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    function download() {
+        $.get("/Apartment/Download", function (Data) {
+            return "success"
+        });
+    }
+</script>

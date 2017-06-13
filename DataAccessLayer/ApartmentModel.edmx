@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ApartmentDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="address_ID" />
+          </Key>
+          <Property Name="address_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address_FlatNumber" Type="int" Nullable="false" />
+          <Property Name="address_HouseName" Type="varchar" MaxLength="20" />
+          <Property Name="address_Street" Type="varchar" MaxLength="20" />
+          <Property Name="address_City" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAmenities">
+          <Key>
+            <PropertyRef Name="amenity_ApartmentNumber" />
+          </Key>
+          <Property Name="amenity_ApartmentNumber" Type="int" Nullable="false" />
+          <Property Name="amenity_ApartmentID" Type="int" Nullable="false" />
+          <Property Name="amenity_Water" Type="bit" Nullable="false" />
+          <Property Name="amenity_Electricity" Type="bit" Nullable="false" />
+          <Property Name="amenity_Housekeeping" Type="bit" Nullable="false" />
+          <Property Name="amenity_RoomHeater" Type="bit" />
+          <Property Name="amenity_Bin" Type="bit" />
+          <Property Name="amenity_Maintenance" Type="bit" />
+          <Property Name="amenity_Parking" Type="bit" />
+          <Property Name="amenity_WashingMachine" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblApartment">
+          <Key>
+            <PropertyRef Name="apartment_ID" />
+          </Key>
+          <Property Name="apartment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="apartment_address" Type="varchar" MaxLength="255" />
+          <Property Name="apartment_NumberOfRooms" Type="int" />
+          <Property Name="apartment_DescriptionOfRoom" Type="varchar" MaxLength="255" />
+          <Property Name="apartment_PriceOfRoom" Type="int" />
+          <Property Name="apartment_IsRoomAvailable" Type="bit" />
+          <Property Name="apartment_OwnerID" Type="int" Nullable="false" />
+          <Property Name="apartment_Photos" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblBookingDetails">
+          <Key>
+            <PropertyRef Name="booking_ID" />
+          </Key>
+          <Property Name="booking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booking_BookingDate" Type="datetime" />
+          <Property Name="booking_MoveInDate" Type="datetime" />
+          <Property Name="booking_MoveOutDate" Type="datetime" />
+          <Property Name="booking_TenantID" Type="int" Nullable="false" />
+          <Property Name="booking_OwnerID" Type="int" Nullable="false" />
+          <Property Name="booking_ApartmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFinalRentAfterDiscount">
+          <Key>
+            <PropertyRef Name="finalRent_ApartmentID" />
+          </Key>
+          <Property Name="finalRent_ApartmentID" Type="int" Nullable="false" />
+          <Property Name="finalRent_DiscountPercent" Type="int" />
+          <Property Name="finalRent_FinalRent" Type="float" />
+        </EntityType>
+        <EntityType Name="tblOwner">
+          <Key>
+            <PropertyRef Name="owner_ID" />
+          </Key>
+          <Property Name="owner_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="owner_UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="owner_FirstName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="owner_LastName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="owner_age" Type="int" />
+          <Property Name="owner_Email" Type="varchar" MaxLength="20" />
+          <Property Name="owner_password" Type="varchar" MaxLength="15" />
+          <Property Name="owner_telephone" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOwnerReview">
+          <Key>
+            <PropertyRef Name="review_ReviewNumber" />
+          </Key>
+          <Property Name="review_ReviewNumber" Type="int" Nullable="false" />
+          <Property Name="review_OwnerID" Type="int" Nullable="false" />
+          <Property Name="review_TenantID" Type="int" Nullable="false" />
+          <Property Name="review_ApartmentID" Type="int" Nullable="false" />
+          <Property Name="review_OwnerReview" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblOwnerVerification">
+          <Key>
+            <PropertyRef Name="owner_VerificationID" />
+          </Key>
+          <Property Name="owner_VerificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="owner_OwnerID" Type="int" />
+          <Property Name="owner_OwnerDocument" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblRent">
+          <Key>
+            <PropertyRef Name="rent_RentID" />
+          </Key>
+          <Property Name="rent_RentID" Type="int" Nullable="false" />
+          <Property Name="rent_ApartmentID" Type="int" Nullable="false" />
+          <Property Name="rent_Rent" Type="int" Nullable="false" />
+          <Property Name="rent_Deposit" Type="int" Nullable="false" />
+          <Property Name="rent_Discount" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTenant">
+          <Key>
+            <PropertyRef Name="tenant_ID" />
+          </Key>
+          <Property Name="tenant_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenant_UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tenant_FirstName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tenant_LastName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tenant_age" Type="int" />
+          <Property Name="tenant_Email" Type="varchar" MaxLength="20" />
+          <Property Name="tenant_password" Type="varchar" MaxLength="15" />
+          <Property Name="tenant_telephone" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTenantReview">
+          <Key>
+            <PropertyRef Name="review_ReviewNumber" />
+          </Key>
+          <Property Name="review_ReviewNumber" Type="int" Nullable="false" />
+          <Property Name="review_TenantID" Type="int" Nullable="false" />
+          <Property Name="review_ApartmentID" Type="int" Nullable="false" />
+          <Property Name="review_OwnerID" Type="int" Nullable="false" />
+          <Property Name="review_ApartmentReview" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblTenantVerification">
+          <Key>
+            <PropertyRef Name="tenant_VerificationID" />
+          </Key>
+          <Property Name="tenant_VerificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenant_TenantID" Type="int" />
+          <Property Name="tenant_TenantDocument" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="fk_AddressID">
+          <End Role="tblAmenities" Type="Self.tblAmenities" Multiplicity="1" />
+          <End Role="tblAddress" Type="Self.tblAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAmenities">
+              <PropertyRef Name="amenity_ApartmentNumber" />
+            </Principal>
+            <Dependent Role="tblAddress">
+              <PropertyRef Name="address_FlatNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ApartmentID">
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="1" />
+          <End Role="tblAmenities" Type="Self.tblAmenities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApartment">
+              <PropertyRef Name="apartment_ID" />
+            </Principal>
+            <Dependent Role="tblAmenities">
+              <PropertyRef Name="amenity_ApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ApartmentIDdiscount">
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="1" />
+          <End Role="tblFinalRentAfterDiscount" Type="Self.tblFinalRentAfterDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblApartment">
+              <PropertyRef Name="apartment_ID" />
+            </Principal>
+            <Dependent Role="tblFinalRentAfterDiscount">
+              <PropertyRef Name="finalRent_ApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ApartmentIDrent">
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="1" />
+          <End Role="tblRent" Type="Self.tblRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApartment">
+              <PropertyRef Name="apartment_ID" />
+            </Principal>
+            <Dependent Role="tblRent">
+              <PropertyRef Name="rent_ApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerID">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="1" />
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblApartment">
+              <PropertyRef Name="apartment_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerIDforBooking">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="1" />
+          <End Role="tblBookingDetails" Type="Self.tblBookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblBookingDetails">
+              <PropertyRef Name="booking_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerIDreview">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="1" />
+          <End Role="tblOwnerReview" Type="Self.tblOwnerReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblOwnerReview">
+              <PropertyRef Name="review_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerIDverification">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="0..1" />
+          <End Role="tblOwnerVerification" Type="Self.tblOwnerVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblOwnerVerification">
+              <PropertyRef Name="owner_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TenantIDforBooking">
+          <End Role="tblTenant" Type="Self.tblTenant" Multiplicity="1" />
+          <End Role="tblBookingDetails" Type="Self.tblBookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTenant">
+              <PropertyRef Name="tenant_ID" />
+            </Principal>
+            <Dependent Role="tblBookingDetails">
+              <PropertyRef Name="booking_TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TenantIDreview">
+          <End Role="tblTenant" Type="Self.tblTenant" Multiplicity="1" />
+          <End Role="tblTenantReview" Type="Self.tblTenantReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTenant">
+              <PropertyRef Name="tenant_ID" />
+            </Principal>
+            <Dependent Role="tblTenantReview">
+              <PropertyRef Name="review_TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TenantIDverification">
+          <End Role="tblTenant" Type="Self.tblTenant" Multiplicity="0..1" />
+          <End Role="tblTenantVerification" Type="Self.tblTenantVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTenant">
+              <PropertyRef Name="tenant_ID" />
+            </Principal>
+            <Dependent Role="tblTenantVerification">
+              <PropertyRef Name="tenant_TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ApartmentDatabaseModelStoreContainer">
+          <EntitySet Name="tblAddress" EntityType="Self.tblAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAmenities" EntityType="Self.tblAmenities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApartment" EntityType="Self.tblApartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBookingDetails" EntityType="Self.tblBookingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFinalRentAfterDiscount" EntityType="Self.tblFinalRentAfterDiscount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOwner" EntityType="Self.tblOwner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOwnerReview" EntityType="Self.tblOwnerReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOwnerVerification" EntityType="Self.tblOwnerVerification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRent" EntityType="Self.tblRent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTenant" EntityType="Self.tblTenant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTenantReview" EntityType="Self.tblTenantReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTenantVerification" EntityType="Self.tblTenantVerification" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_AddressID" Association="Self.fk_AddressID">
+            <End Role="tblAmenities" EntitySet="tblAmenities" />
+            <End Role="tblAddress" EntitySet="tblAddress" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ApartmentID" Association="Self.fk_ApartmentID">
+            <End Role="tblApartment" EntitySet="tblApartment" />
+            <End Role="tblAmenities" EntitySet="tblAmenities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ApartmentIDdiscount" Association="Self.fk_ApartmentIDdiscount">
+            <End Role="tblApartment" EntitySet="tblApartment" />
+            <End Role="tblFinalRentAfterDiscount" EntitySet="tblFinalRentAfterDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ApartmentIDrent" Association="Self.fk_ApartmentIDrent">
+            <End Role="tblApartment" EntitySet="tblApartment" />
+            <End Role="tblRent" EntitySet="tblRent" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerID" Association="Self.fk_OwnerID">
+            <End Role="tblOwner" EntitySet="tblOwner" />
+            <End Role="tblApartment" EntitySet="tblApartment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerIDforBooking" Association="Self.fk_OwnerIDforBooking">
+            <End Role="tblOwner" EntitySet="tblOwner" />
+            <End Role="tblBookingDetails" EntitySet="tblBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerIDreview" Association="Self.fk_OwnerIDreview">
+            <End Role="tblOwner" EntitySet="tblOwner" />
+            <End Role="tblOwnerReview" EntitySet="tblOwnerReview" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerIDverification" Association="Self.fk_OwnerIDverification">
+            <End Role="tblOwner" EntitySet="tblOwner" />
+            <End Role="tblOwnerVerification" EntitySet="tblOwnerVerification" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TenantIDforBooking" Association="Self.fk_TenantIDforBooking">
+            <End Role="tblTenant" EntitySet="tblTenant" />
+            <End Role="tblBookingDetails" EntitySet="tblBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TenantIDreview" Association="Self.fk_TenantIDreview">
+            <End Role="tblTenant" EntitySet="tblTenant" />
+            <End Role="tblTenantReview" EntitySet="tblTenantReview" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TenantIDverification" Association="Self.fk_TenantIDverification">
+            <End Role="tblTenant" EntitySet="tblTenant" />
+            <End Role="tblTenantVerification" EntitySet="tblTenantVerification" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApartmentDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="address_ID" />
+          </Key>
+          <Property Name="address_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address_FlatNumber" Type="Int32" Nullable="false" />
+          <Property Name="address_HouseName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="address_Street" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="address_City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAmenity" Relationship="Self.fk_AddressID" FromRole="tblAddress" ToRole="tblAmenities" />
+        </EntityType>
+        <EntityType Name="tblAmenity">
+          <Key>
+            <PropertyRef Name="amenity_ApartmentNumber" />
+          </Key>
+          <Property Name="amenity_ApartmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="amenity_ApartmentID" Type="Int32" Nullable="false" />
+          <Property Name="amenity_Water" Type="Boolean" Nullable="false" />
+          <Property Name="amenity_Electricity" Type="Boolean" Nullable="false" />
+          <Property Name="amenity_Housekeeping" Type="Boolean" Nullable="false" />
+          <Property Name="amenity_RoomHeater" Type="Boolean" />
+          <Property Name="amenity_Bin" Type="Boolean" />
+          <Property Name="amenity_Maintenance" Type="Boolean" />
+          <Property Name="amenity_Parking" Type="Boolean" />
+          <Property Name="amenity_WashingMachine" Type="Boolean" />
+          <NavigationProperty Name="tblAddresses" Relationship="Self.fk_AddressID" FromRole="tblAmenities" ToRole="tblAddress" />
+          <NavigationProperty Name="tblApartment" Relationship="Self.fk_ApartmentID" FromRole="tblAmenities" ToRole="tblApartment" />
+        </EntityType>
+        <EntityType Name="tblApartment">
+          <Key>
+            <PropertyRef Name="apartment_ID" />
+          </Key>
+          <Property Name="apartment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apartment_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apartment_NumberOfRooms" Type="Int32" />
+          <Property Name="apartment_DescriptionOfRoom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apartment_PriceOfRoom" Type="Int32" />
+          <Property Name="apartment_IsRoomAvailable" Type="Boolean" />
+          <Property Name="apartment_OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="apartment_Photos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAmenities" Relationship="Self.fk_ApartmentID" FromRole="tblApartment" ToRole="tblAmenities" />
+          <NavigationProperty Name="tblFinalRentAfterDiscount" Relationship="Self.fk_ApartmentIDdiscount" FromRole="tblApartment" ToRole="tblFinalRentAfterDiscount" />
+          <NavigationProperty Name="tblRents" Relationship="Self.fk_ApartmentIDrent" FromRole="tblApartment" ToRole="tblRent" />
+          <NavigationProperty Name="tblOwner" Relationship="Self.fk_OwnerID" FromRole="tblApartment" ToRole="tblOwner" />
+        </EntityType>
+        <EntityType Name="tblBookingDetail">
+          <Key>
+            <PropertyRef Name="booking_ID" />
+          </Key>
+          <Property Name="booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booking_BookingDate" Type="DateTime" Precision="3" />
+          <Property Name="booking_MoveInDate" Type="DateTime" Precision="3" />
+          <Property Name="booking_MoveOutDate" Type="DateTime" Precision="3" />
+          <Property Name="booking_TenantID" Type="Int32" Nullable="false" />
+          <Property Name="booking_OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="booking_ApartmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblOwner" Relationship="Self.fk_OwnerIDforBooking" FromRole="tblBookingDetails" ToRole="tblOwner" />
+          <NavigationProperty Name="tblTenant" Relationship="Self.fk_TenantIDforBooking" FromRole="tblBookingDetails" ToRole="tblTenant" />
+        </EntityType>
+        <EntityType Name="tblFinalRentAfterDiscount">
+          <Key>
+            <PropertyRef Name="finalRent_ApartmentID" />
+          </Key>
+          <Property Name="finalRent_ApartmentID" Type="Int32" Nullable="false" />
+          <Property Name="finalRent_DiscountPercent" Type="Int32" />
+          <Property Name="finalRent_FinalRent" Type="Double" />
+          <NavigationProperty Name="tblApartment" Relationship="Self.fk_ApartmentIDdiscount" FromRole="tblFinalRentAfterDiscount" ToRole="tblApartment" />
+        </EntityType>
+        <EntityType Name="tblOwner">
+          <Key>
+            <PropertyRef Name="owner_ID" />
+          </Key>
+          <Property Name="owner_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="owner_UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="owner_FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="owner_LastName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="owner_age" Type="Int32" />
+          <Property Name="owner_Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="owner_password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="owner_telephone" Type="Int32" />
+          <NavigationProperty Name="tblApartments" Relationship="Self.fk_OwnerID" FromRole="tblOwner" ToRole="tblApartment" />
+          <NavigationProperty Name="tblBookingDetails" Relationship="Self.fk_OwnerIDforBooking" FromRole="tblOwner" ToRole="tblBookingDetails" />
+          <NavigationProperty Name="tblOwnerReviews" Relationship="Self.fk_OwnerIDreview" FromRole="tblOwner" ToRole="tblOwnerReview" />
+          <NavigationProperty Name="tblOwnerVerifications" Relationship="Self.fk_OwnerIDverification" FromRole="tblOwner" ToRole="tblOwnerVerification" />
+        </EntityType>
+        <EntityType Name="tblOwnerReview">
+          <Key>
+            <PropertyRef Name="review_ReviewNumber" />
+          </Key>
+          <Property Name="review_ReviewNumber" Type="Int32" Nullable="false" />
+          <Property Name="review_OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="review_TenantID" Type="Int32" Nullable="false" />
+          <Property Name="review_ApartmentID" Type="Int32" Nullable="false" />
+          <Property Name="review_OwnerReview" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOwner" Relationship="Self.fk_OwnerIDreview" FromRole="tblOwnerReview" ToRole="tblOwner" />
+        </EntityType>
+        <EntityType Name="tblOwnerVerification">
+          <Key>
+            <PropertyRef Name="owner_VerificationID" />
+          </Key>
+          <Property Name="owner_VerificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="owner_OwnerID" Type="Int32" />
+          <Property Name="owner_OwnerDocument" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOwner" Relationship="Self.fk_OwnerIDverification" FromRole="tblOwnerVerification" ToRole="tblOwner" />
+        </EntityType>
+        <EntityType Name="tblRent">
+          <Key>
+            <PropertyRef Name="rent_RentID" />
+          </Key>
+          <Property Name="rent_RentID" Type="Int32" Nullable="false" />
+          <Property Name="rent_ApartmentID" Type="Int32" Nullable="false" />
+          <Property Name="rent_Rent" Type="Int32" Nullable="false" />
+          <Property Name="rent_Deposit" Type="Int32" Nullable="false" />
+          <Property Name="rent_Discount" Type="Int32" />
+          <NavigationProperty Name="tblApartment" Relationship="Self.fk_ApartmentIDrent" FromRole="tblRent" ToRole="tblApartment" />
+        </EntityType>
+        <EntityType Name="tblTenant">
+          <Key>
+            <PropertyRef Name="tenant_ID" />
+          </Key>
+          <Property Name="tenant_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenant_UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenant_FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenant_LastName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenant_age" Type="Int32" />
+          <Property Name="tenant_Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tenant_password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="tenant_telephone" Type="Int32" />
+          <NavigationProperty Name="tblBookingDetails" Relationship="Self.fk_TenantIDforBooking" FromRole="tblTenant" ToRole="tblBookingDetails" />
+          <NavigationProperty Name="tblTenantReviews" Relationship="Self.fk_TenantIDreview" FromRole="tblTenant" ToRole="tblTenantReview" />
+          <NavigationProperty Name="tblTenantVerifications" Relationship="Self.fk_TenantIDverification" FromRole="tblTenant" ToRole="tblTenantVerification" />
+        </EntityType>
+        <EntityType Name="tblTenantReview">
+          <Key>
+            <PropertyRef Name="review_ReviewNumber" />
+          </Key>
+          <Property Name="review_ReviewNumber" Type="Int32" Nullable="false" />
+          <Property Name="review_TenantID" Type="Int32" Nullable="false" />
+          <Property Name="review_ApartmentID" Type="Int32" Nullable="false" />
+          <Property Name="review_OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="review_ApartmentReview" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblTenant" Relationship="Self.fk_TenantIDreview" FromRole="tblTenantReview" ToRole="tblTenant" />
+        </EntityType>
+        <EntityType Name="tblTenantVerification">
+          <Key>
+            <PropertyRef Name="tenant_VerificationID" />
+          </Key>
+          <Property Name="tenant_VerificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenant_TenantID" Type="Int32" />
+          <Property Name="tenant_TenantDocument" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblTenant" Relationship="Self.fk_TenantIDverification" FromRole="tblTenantVerification" ToRole="tblTenant" />
+        </EntityType>
+        <Association Name="fk_AddressID">
+          <End Role="tblAmenities" Type="Self.tblAmenity" Multiplicity="1" />
+          <End Role="tblAddress" Type="Self.tblAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAmenities">
+              <PropertyRef Name="amenity_ApartmentNumber" />
+            </Principal>
+            <Dependent Role="tblAddress">
+              <PropertyRef Name="address_FlatNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ApartmentID">
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="1" />
+          <End Role="tblAmenities" Type="Self.tblAmenity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApartment">
+              <PropertyRef Name="apartment_ID" />
+            </Principal>
+            <Dependent Role="tblAmenities">
+              <PropertyRef Name="amenity_ApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ApartmentIDdiscount">
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="1" />
+          <End Role="tblFinalRentAfterDiscount" Type="Self.tblFinalRentAfterDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblApartment">
+              <PropertyRef Name="apartment_ID" />
+            </Principal>
+            <Dependent Role="tblFinalRentAfterDiscount">
+              <PropertyRef Name="finalRent_ApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ApartmentIDrent">
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="1" />
+          <End Role="tblRent" Type="Self.tblRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApartment">
+              <PropertyRef Name="apartment_ID" />
+            </Principal>
+            <Dependent Role="tblRent">
+              <PropertyRef Name="rent_ApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerID">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="1" />
+          <End Role="tblApartment" Type="Self.tblApartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblApartment">
+              <PropertyRef Name="apartment_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerIDforBooking">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="1" />
+          <End Role="tblBookingDetails" Type="Self.tblBookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblBookingDetails">
+              <PropertyRef Name="booking_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TenantIDforBooking">
+          <End Role="tblTenant" Type="Self.tblTenant" Multiplicity="1" />
+          <End Role="tblBookingDetails" Type="Self.tblBookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTenant">
+              <PropertyRef Name="tenant_ID" />
+            </Principal>
+            <Dependent Role="tblBookingDetails">
+              <PropertyRef Name="booking_TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerIDreview">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="1" />
+          <End Role="tblOwnerReview" Type="Self.tblOwnerReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblOwnerReview">
+              <PropertyRef Name="review_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerIDverification">
+          <End Role="tblOwner" Type="Self.tblOwner" Multiplicity="0..1" />
+          <End Role="tblOwnerVerification" Type="Self.tblOwnerVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOwner">
+              <PropertyRef Name="owner_ID" />
+            </Principal>
+            <Dependent Role="tblOwnerVerification">
+              <PropertyRef Name="owner_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TenantIDreview">
+          <End Role="tblTenant" Type="Self.tblTenant" Multiplicity="1" />
+          <End Role="tblTenantReview" Type="Self.tblTenantReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTenant">
+              <PropertyRef Name="tenant_ID" />
+            </Principal>
+            <Dependent Role="tblTenantReview">
+              <PropertyRef Name="review_TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TenantIDverification">
+          <End Role="tblTenant" Type="Self.tblTenant" Multiplicity="0..1" />
+          <End Role="tblTenantVerification" Type="Self.tblTenantVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTenant">
+              <PropertyRef Name="tenant_ID" />
+            </Principal>
+            <Dependent Role="tblTenantVerification">
+              <PropertyRef Name="tenant_TenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ApartmentDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAddresses" EntityType="Self.tblAddress" />
+          <EntitySet Name="tblAmenities" EntityType="Self.tblAmenity" />
+          <EntitySet Name="tblApartments" EntityType="Self.tblApartment" />
+          <EntitySet Name="tblBookingDetails" EntityType="Self.tblBookingDetail" />
+          <EntitySet Name="tblFinalRentAfterDiscounts" EntityType="Self.tblFinalRentAfterDiscount" />
+          <EntitySet Name="tblOwners" EntityType="Self.tblOwner" />
+          <EntitySet Name="tblOwnerReviews" EntityType="Self.tblOwnerReview" />
+          <EntitySet Name="tblOwnerVerifications" EntityType="Self.tblOwnerVerification" />
+          <EntitySet Name="tblRents" EntityType="Self.tblRent" />
+          <EntitySet Name="tblTenants" EntityType="Self.tblTenant" />
+          <EntitySet Name="tblTenantReviews" EntityType="Self.tblTenantReview" />
+          <EntitySet Name="tblTenantVerifications" EntityType="Self.tblTenantVerification" />
+          <AssociationSet Name="fk_AddressID" Association="Self.fk_AddressID">
+            <End Role="tblAmenities" EntitySet="tblAmenities" />
+            <End Role="tblAddress" EntitySet="tblAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ApartmentID" Association="Self.fk_ApartmentID">
+            <End Role="tblApartment" EntitySet="tblApartments" />
+            <End Role="tblAmenities" EntitySet="tblAmenities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ApartmentIDdiscount" Association="Self.fk_ApartmentIDdiscount">
+            <End Role="tblApartment" EntitySet="tblApartments" />
+            <End Role="tblFinalRentAfterDiscount" EntitySet="tblFinalRentAfterDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ApartmentIDrent" Association="Self.fk_ApartmentIDrent">
+            <End Role="tblApartment" EntitySet="tblApartments" />
+            <End Role="tblRent" EntitySet="tblRents" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerID" Association="Self.fk_OwnerID">
+            <End Role="tblOwner" EntitySet="tblOwners" />
+            <End Role="tblApartment" EntitySet="tblApartments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerIDforBooking" Association="Self.fk_OwnerIDforBooking">
+            <End Role="tblOwner" EntitySet="tblOwners" />
+            <End Role="tblBookingDetails" EntitySet="tblBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TenantIDforBooking" Association="Self.fk_TenantIDforBooking">
+            <End Role="tblTenant" EntitySet="tblTenants" />
+            <End Role="tblBookingDetails" EntitySet="tblBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerIDreview" Association="Self.fk_OwnerIDreview">
+            <End Role="tblOwner" EntitySet="tblOwners" />
+            <End Role="tblOwnerReview" EntitySet="tblOwnerReviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerIDverification" Association="Self.fk_OwnerIDverification">
+            <End Role="tblOwner" EntitySet="tblOwners" />
+            <End Role="tblOwnerVerification" EntitySet="tblOwnerVerifications" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TenantIDreview" Association="Self.fk_TenantIDreview">
+            <End Role="tblTenant" EntitySet="tblTenants" />
+            <End Role="tblTenantReview" EntitySet="tblTenantReviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TenantIDverification" Association="Self.fk_TenantIDverification">
+            <End Role="tblTenant" EntitySet="tblTenants" />
+            <End Role="tblTenantVerification" EntitySet="tblTenantVerifications" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ApartmentDatabaseModelStoreContainer" CdmEntityContainer="ApartmentDBContext">
+          <EntitySetMapping Name="tblAddresses">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblAddress">
+              <MappingFragment StoreEntitySet="tblAddress">
+                <ScalarProperty Name="address_ID" ColumnName="address_ID" />
+                <ScalarProperty Name="address_FlatNumber" ColumnName="address_FlatNumber" />
+                <ScalarProperty Name="address_HouseName" ColumnName="address_HouseName" />
+                <ScalarProperty Name="address_Street" ColumnName="address_Street" />
+                <ScalarProperty Name="address_City" ColumnName="address_City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAmenities">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblAmenity">
+              <MappingFragment StoreEntitySet="tblAmenities">
+                <ScalarProperty Name="amenity_ApartmentNumber" ColumnName="amenity_ApartmentNumber" />
+                <ScalarProperty Name="amenity_ApartmentID" ColumnName="amenity_ApartmentID" />
+                <ScalarProperty Name="amenity_Water" ColumnName="amenity_Water" />
+                <ScalarProperty Name="amenity_Electricity" ColumnName="amenity_Electricity" />
+                <ScalarProperty Name="amenity_Housekeeping" ColumnName="amenity_Housekeeping" />
+                <ScalarProperty Name="amenity_RoomHeater" ColumnName="amenity_RoomHeater" />
+                <ScalarProperty Name="amenity_Bin" ColumnName="amenity_Bin" />
+                <ScalarProperty Name="amenity_Maintenance" ColumnName="amenity_Maintenance" />
+                <ScalarProperty Name="amenity_Parking" ColumnName="amenity_Parking" />
+                <ScalarProperty Name="amenity_WashingMachine" ColumnName="amenity_WashingMachine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApartments">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblApartment">
+              <MappingFragment StoreEntitySet="tblApartment">
+                <ScalarProperty Name="apartment_ID" ColumnName="apartment_ID" />
+                <ScalarProperty Name="apartment_address" ColumnName="apartment_address" />
+                <ScalarProperty Name="apartment_NumberOfRooms" ColumnName="apartment_NumberOfRooms" />
+                <ScalarProperty Name="apartment_DescriptionOfRoom" ColumnName="apartment_DescriptionOfRoom" />
+                <ScalarProperty Name="apartment_PriceOfRoom" ColumnName="apartment_PriceOfRoom" />
+                <ScalarProperty Name="apartment_IsRoomAvailable" ColumnName="apartment_IsRoomAvailable" />
+                <ScalarProperty Name="apartment_OwnerID" ColumnName="apartment_OwnerID" />
+                <ScalarProperty Name="apartment_Photos" ColumnName="apartment_Photos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBookingDetails">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblBookingDetail">
+              <MappingFragment StoreEntitySet="tblBookingDetails">
+                <ScalarProperty Name="booking_ID" ColumnName="booking_ID" />
+                <ScalarProperty Name="booking_BookingDate" ColumnName="booking_BookingDate" />
+                <ScalarProperty Name="booking_MoveInDate" ColumnName="booking_MoveInDate" />
+                <ScalarProperty Name="booking_MoveOutDate" ColumnName="booking_MoveOutDate" />
+                <ScalarProperty Name="booking_TenantID" ColumnName="booking_TenantID" />
+                <ScalarProperty Name="booking_OwnerID" ColumnName="booking_OwnerID" />
+                <ScalarProperty Name="booking_ApartmentID" ColumnName="booking_ApartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFinalRentAfterDiscounts">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblFinalRentAfterDiscount">
+              <MappingFragment StoreEntitySet="tblFinalRentAfterDiscount">
+                <ScalarProperty Name="finalRent_ApartmentID" ColumnName="finalRent_ApartmentID" />
+                <ScalarProperty Name="finalRent_DiscountPercent" ColumnName="finalRent_DiscountPercent" />
+                <ScalarProperty Name="finalRent_FinalRent" ColumnName="finalRent_FinalRent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOwners">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblOwner">
+              <MappingFragment StoreEntitySet="tblOwner">
+                <ScalarProperty Name="owner_ID" ColumnName="owner_ID" />
+                <ScalarProperty Name="owner_UserName" ColumnName="owner_UserName" />
+                <ScalarProperty Name="owner_FirstName" ColumnName="owner_FirstName" />
+                <ScalarProperty Name="owner_LastName" ColumnName="owner_LastName" />
+                <ScalarProperty Name="owner_age" ColumnName="owner_age" />
+                <ScalarProperty Name="owner_Email" ColumnName="owner_Email" />
+                <ScalarProperty Name="owner_password" ColumnName="owner_password" />
+                <ScalarProperty Name="owner_telephone" ColumnName="owner_telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOwnerReviews">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblOwnerReview">
+              <MappingFragment StoreEntitySet="tblOwnerReview">
+                <ScalarProperty Name="review_ReviewNumber" ColumnName="review_ReviewNumber" />
+                <ScalarProperty Name="review_OwnerID" ColumnName="review_OwnerID" />
+                <ScalarProperty Name="review_TenantID" ColumnName="review_TenantID" />
+                <ScalarProperty Name="review_ApartmentID" ColumnName="review_ApartmentID" />
+                <ScalarProperty Name="review_OwnerReview" ColumnName="review_OwnerReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOwnerVerifications">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblOwnerVerification">
+              <MappingFragment StoreEntitySet="tblOwnerVerification">
+                <ScalarProperty Name="owner_VerificationID" ColumnName="owner_VerificationID" />
+                <ScalarProperty Name="owner_OwnerID" ColumnName="owner_OwnerID" />
+                <ScalarProperty Name="owner_OwnerDocument" ColumnName="owner_OwnerDocument" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRents">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblRent">
+              <MappingFragment StoreEntitySet="tblRent">
+                <ScalarProperty Name="rent_RentID" ColumnName="rent_RentID" />
+                <ScalarProperty Name="rent_ApartmentID" ColumnName="rent_ApartmentID" />
+                <ScalarProperty Name="rent_Rent" ColumnName="rent_Rent" />
+                <ScalarProperty Name="rent_Deposit" ColumnName="rent_Deposit" />
+                <ScalarProperty Name="rent_Discount" ColumnName="rent_Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTenants">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblTenant">
+              <MappingFragment StoreEntitySet="tblTenant">
+                <ScalarProperty Name="tenant_ID" ColumnName="tenant_ID" />
+                <ScalarProperty Name="tenant_UserName" ColumnName="tenant_UserName" />
+                <ScalarProperty Name="tenant_FirstName" ColumnName="tenant_FirstName" />
+                <ScalarProperty Name="tenant_LastName" ColumnName="tenant_LastName" />
+                <ScalarProperty Name="tenant_age" ColumnName="tenant_age" />
+                <ScalarProperty Name="tenant_Email" ColumnName="tenant_Email" />
+                <ScalarProperty Name="tenant_password" ColumnName="tenant_password" />
+                <ScalarProperty Name="tenant_telephone" ColumnName="tenant_telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTenantReviews">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblTenantReview">
+              <MappingFragment StoreEntitySet="tblTenantReview">
+                <ScalarProperty Name="review_ReviewNumber" ColumnName="review_ReviewNumber" />
+                <ScalarProperty Name="review_TenantID" ColumnName="review_TenantID" />
+                <ScalarProperty Name="review_ApartmentID" ColumnName="review_ApartmentID" />
+                <ScalarProperty Name="review_OwnerID" ColumnName="review_OwnerID" />
+                <ScalarProperty Name="review_ApartmentReview" ColumnName="review_ApartmentReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTenantVerifications">
+            <EntityTypeMapping TypeName="ApartmentDatabaseModel.tblTenantVerification">
+              <MappingFragment StoreEntitySet="tblTenantVerification">
+                <ScalarProperty Name="tenant_VerificationID" ColumnName="tenant_VerificationID" />
+                <ScalarProperty Name="tenant_TenantID" ColumnName="tenant_TenantID" />
+                <ScalarProperty Name="tenant_TenantDocument" ColumnName="tenant_TenantDocument" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,107 @@
+﻿@model ApartmentDomain.Address
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Address</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FlatNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FlatNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HouseName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HouseName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfRooms)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfRooms)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptionOfRoom)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DescriptionOfRoom)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsRoomAvailable)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsRoomAvailable)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OwnerID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OwnerID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Photos)
+            </dt>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Street)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Street)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Country)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ZipCode)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("RegisterBooking", "RegisterBooking", new { AddressID = Model.address_ID }) |
+        @Html.ActionLink("Back to List", "ApartmentIndex")
+    </p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af4ca50849024824aacec616223faef1" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblAddress" Width="1.5" PointX="10.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblAmenity" Width="1.5" PointX="8.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblApartment" Width="1.5" PointX="1.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblBookingDetail" Width="1.5" PointX="4.125" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblFinalRentAfterDiscount" Width="1.5" PointX="4.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblOwner" Width="1.5" PointX="12.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblOwnerReview" Width="1.5" PointX="10" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblOwnerVerification" Width="1.5" PointX="5.875" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblRent" Width="1.5" PointX="8" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblTenant" Width="1.5" PointX="1.875" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblTenantReview" Width="1.5" PointX="6.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApartmentDatabaseModel.tblTenantVerification" Width="1.5" PointX="11.125" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_AddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_ApartmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_ApartmentIDdiscount" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_ApartmentIDrent" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_OwnerID" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_OwnerIDforBooking" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_TenantIDforBooking" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_OwnerIDreview" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_OwnerIDverification" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_TenantIDreview" ManuallyRouted="false" />
+        <AssociationConnector Association="ApartmentDatabaseModel.fk_TenantIDverification" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

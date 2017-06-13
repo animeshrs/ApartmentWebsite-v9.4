@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ApartmentDomain.Address>
+
+@{
+    ViewBag.Title = "ApartmentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ApartmentList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlatNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HouseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfRooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionOfRoom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialRent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialDeposit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRoomAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlatNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HouseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfRooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionOfRoom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitialRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitialDeposit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRoomAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>        
+    </tr>
+}
+
+</table>

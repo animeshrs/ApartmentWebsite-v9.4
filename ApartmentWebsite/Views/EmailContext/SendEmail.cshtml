@@ -1,0 +1,41 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SendEmail</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <form method="post" action="SendEmail">
+            <table>
+                <tr>
+                    <td>
+                        <span>Receiver Email ID: </span>
+                    </td>
+                    <td>
+                        <input type="text" name="receiverEmailID" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Subject:</span>
+                    <td>
+                        <input type="text" name="subject" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Message:</span>
+                    </td>
+                    <td>
+                        <textarea style="width:168px" name="message"></textarea>
+                    </td>
+                </tr>
+                <tr><td><button class="btn btn-primary" type="submit">Send Email</button></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

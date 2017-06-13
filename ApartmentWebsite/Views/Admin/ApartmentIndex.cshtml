@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ApartmentDomain.Address>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ApartmentIndex</title>
+</head>
+<body>
+    <div style="font-family:Arial">
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FlatNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HouseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberOfRooms)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DescriptionOfRoom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsRoomAvailable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Street)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                using (Html.BeginForm("Delete", "Admin", new { PersonID = item.OwnerID }))
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FlatNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HouseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfRooms)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DescriptionOfRoom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsRoomAvailable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Photos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Street)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { AddressID = item.address_ID }) |                        
+                        <input type="submit" value="Delete" />
+                    </td>
+                </tr>
+                }
+            }
+
+        </table>
+    </div>
+</body>
+</html>

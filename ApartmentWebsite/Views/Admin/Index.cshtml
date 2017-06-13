@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ApartmentDomain.Person>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div style="font-family:Arial">
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsMarried)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PersonType)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                using (Html.BeginForm("Delete", "Admin", new { PersonID = item.Person_ID }))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telephone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsMarried)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PersonType)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { PersonID = item.Person_ID }) |
+                            @Html.ActionLink("Details", "Details", new { PersonID = item.Person_ID }) |
+                            
+                            <input type="submit" value="Delete" />
+
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿@model ApartmentDomain.FinalRentDetails
+
+@{
+    ViewBag.Title = "GetFinalRentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apartment Rent Details Page</h2>
+
+<div>
+    <h4>Final Rent Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlatNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlatNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseName)
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Rent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deposit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoveInDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoveInDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoveOutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoveOutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalRent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinalRent)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ApartmentIndex")
+</p>

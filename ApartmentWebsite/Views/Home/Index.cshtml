@@ -1,0 +1,31 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    Welcome @System.Web.HttpContext.Current.User.Identity.Name
+                </td>
+            </tr>
+        </table>
+        <table align="right">
+            <tr>
+                <td>
+                    @using (Html.BeginForm("Index", "Home"))
+                    {
+                        <input type="submit" value="Logout" />
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

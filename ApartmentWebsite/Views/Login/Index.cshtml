@@ -1,0 +1,48 @@
+﻿@model ApartmentWebsite.Models.Login
+
+@{
+    Layout = "~/Views/_LoginIndexView.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <h2><b>Welcome to Apartment Website. </b></h2>
+            <h4>Login if you are already a registered member, else register to view the services offered !!!</h4>
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.UserName)
+                    </td>
+
+                    <td>
+                        @Html.TextBoxFor(m => m.UserName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Password)
+                    </td>
+
+                    <td>@Html.PasswordFor(m => m.Password)</td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <input type="submit" value="Submit" />
+            <br />
+            <br />
+                @Html.ActionLink("New User? Register Here", "Create")
+
+                @Html.ValidationSummary()
+        }
+    </div>
+</body>
+</html>

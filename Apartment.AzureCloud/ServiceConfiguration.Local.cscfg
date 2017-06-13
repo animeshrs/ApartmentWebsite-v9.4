@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Apartment.AzureCloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="ApartmentWebsite">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="cadtest" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEDX7CNMVWgiYSHMWZflKP0cwDQYJKoZIhvcNAQEBBQAEggEASOeTN3B4VS4+woZ7Rh+XGqw85XAm4SKbdCLxVGKeC6GVOmnRT4BG+HToqrSOPKwBGzM6whhCmDFWv90U8dwMglCZOU6Qr/OYZrVr9WiRnC8i6QXx6zjaz1VG3STCw5h0T+pU02UHUex8Yc6jsOpbBXPeobLLOvIvX7TtjbzyGqzGjxO3n4TazqGmTULdy/4GNvbbBq65oqJ5jx3ehtsvhcmf+MgDCeLhr2l8VeD412yElE7MkyA8XVUGR/j0UpXucsTjOOINHy2/fC92q1FmHfdm84k85WJiydiaT/oxCYd6f5OQObyAsh2JOKuSF1DCbjcBN0mdNie2hJ6uUoZ8UjAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECOLtcZb/hF/YgBDCviJuz8oaFBw5PFcv92wv" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2017-12-11T23:59:59.0000000+00:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="0fb22734-844e-4090-8627-ea32b39f3209" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="E7D351CE4A18510208DE5FD1832DDA0E7A767AD7" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ApartmentDomain.BookingDetails>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetBookingDetails</title>
+</head>
+<body>
+    <div style="font-family:Arial">
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MoveInDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MoveOutDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PersonID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressID)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MoveInDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MoveOutDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressID)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { PersonID=item.PersonID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
