@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentDomain", "Apartmen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentRepositoryClass", "RepositoryClass\ApartmentRepositoryClass.csproj", "{DC4B5F0A-D053-4E4F-AD1A-20EDB6C44AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apartment.Test", "Apartment.Test\Apartment.Test.csproj", "{3F50FBA0-0474-4466-BB8B-7F59E1A51E0B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apartment.Document", "Apartment.Document\Apartment.Document.csproj", "{2D235230-4AEE-427A-8686-6F9803864C4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apartment.Security", "Apartment.Security\Apartment.Security.csproj", "{065800AB-4EEE-440C-8381-1449A76F5268}"
@@ -39,10 +37,6 @@ Global
 		{DC4B5F0A-D053-4E4F-AD1A-20EDB6C44AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC4B5F0A-D053-4E4F-AD1A-20EDB6C44AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC4B5F0A-D053-4E4F-AD1A-20EDB6C44AF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F50FBA0-0474-4466-BB8B-7F59E1A51E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F50FBA0-0474-4466-BB8B-7F59E1A51E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F50FBA0-0474-4466-BB8B-7F59E1A51E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F50FBA0-0474-4466-BB8B-7F59E1A51E0B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D235230-4AEE-427A-8686-6F9803864C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D235230-4AEE-427A-8686-6F9803864C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D235230-4AEE-427A-8686-6F9803864C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU

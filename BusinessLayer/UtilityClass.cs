@@ -28,7 +28,7 @@ namespace ApartmentBusinessLayer
         //This method is used as connection string logic for SQL database
         public static string connectionString()
         {
-            //return "Data Source= .;Initial Catalog=ApartmentDatabase_Final;Integrated Security=False;User Id=Animesh;Password=#Animesh2016;MultipleActiveResultSets=True";
+            //return "Data Source= .;Initial Catalog=Apartment;Integrated Security=False;User Id=Animesh;Password=#Animesh2016;MultipleActiveResultSets=True";
             return ConfigurationManager.ConnectionStrings["ApartmentDBContext"].ConnectionString;
         }
 

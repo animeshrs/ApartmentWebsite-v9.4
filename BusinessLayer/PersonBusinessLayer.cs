@@ -109,16 +109,16 @@ namespace ApartmentBusinessLayer
                 string query = "Insert into UserRole(RoleId,Person_Id) values(@RoleId,@Person_Id)";
                 con.Open();
                 SqlCommand cmd = new SqlCommand(rol, con);
-                //SqlCommand cmd1 = new SqlCommand(query, con);
+                SqlCommand cmd1 = new SqlCommand(query, con);
 
-                //cmd.Parameters.AddWithValue("@RoleName", role);
-                //object rid = cmd.ExecuteScalar();
-                //if (rid != null)
-                //    roleID = rid.ToString();
-                //cmd1.Parameters.AddWithValue("@RoleId", roleID);
-                //cmd1.Parameters.AddWithValue("@Person_Id", personId.ToString());
-                //cmd1.ExecuteNonQuery();
-                //con.Close();
+                cmd.Parameters.AddWithValue("@RoleName", role);
+                object rid = cmd.ExecuteScalar();
+                if (rid != null)
+                    roleID = rid.ToString();
+                cmd1.Parameters.AddWithValue("@RoleId", roleID);
+                cmd1.Parameters.AddWithValue("@Person_Id", personId.ToString());
+                cmd1.ExecuteNonQuery();
+                con.Close();
 
             }
         }
@@ -172,10 +172,10 @@ namespace ApartmentBusinessLayer
                 SqlCommand cmd = new SqlCommand("spDeletePerson", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter Person_ID = new SqlParameter();
-                Person_ID.ParameterName = "@Person_ID";
-                Person_ID.Value = PersonID;
-                cmd.Parameters.Add(HttpUtility.HtmlEncode(Person_ID));
+                SqlParameter Person_ID = new SqlParameter("@Person_ID", PersonID);
+                //Person_ID.ParameterName = "@Person_ID";
+                //Person_ID.Value = PersonID;
+                cmd.Parameters.Add(Person_ID);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
